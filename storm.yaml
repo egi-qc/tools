@@ -1,0 +1,66 @@
+--- # StoRM release
+product: StoRM
+technology_provider: European Middleware Initiative
+tp_short: EMIDRY
+contact: cristina.aiftimiei@pd.infn.it
+desc:
+  StoRM (STOrage Resource Manager) is a storage manager service (SRM) for generic 
+  disk based storage system, compliant with the standard SRM interface version 2.2.
+  StoRM provides data management capabilities in a Grid environment to share, access 
+  and transfer data among heterogeneous and geographically distributed data centres.
+  In particular, StoRM works on each POSIX filesystems (ext3, ext4, xfs, basically 
+  on everything than can be mounted on a Linux machine) but it also brings in Grid the 
+  advantages of high performance storage systems based on cluster file system (such as 
+  GPFS from IBM or Lustre from Sun Microsystems) supporting direct access (native
+  POSIX I/O call) to shared files and directories, as well as other standard Grid
+  access protocols. StoRM is adopted in the context of WLCG computational Grid framework.
+
+docs: http://italiangrid.github.io/storm/documentation.html
+releasenotes: http://italiangrid.github.io/storm/release-notes/StoRM-v1.11.3.html
+changelog: 
+  http://italiangrid.github.io/storm/release-notes/storm-backend-server/1.11.3/
+  http://italiangrid.github.io/storm/release-notes/storm-frontend-server/1.8.4/
+  http://italiangrid.github.io/storm/release-notes/storm-gridhttps-server/3.0.0/
+  http://italiangrid.github.io/storm/release-notes/yaim-storm/4.3.4/
+  http://italiangrid.github.io/storm/release-notes/storm-srm-client/1.6.1/
+  http://italiangrid.github.io/storm/release-notes/storm-backend-server/1.11.3/
+isodate: 20140123
+incremental: false
+emergency: false
+version: 1.11.3
+
+capabilities: [File Access, File Transfer, Storage Management]
+
+packages:
+  - os: sl6
+    arch: x86_64
+    gpgkey: http://emisoft.web.cern.ch/emisoft/dist/EMI/3/RPM-GPG-KEY-emi
+    rpms: 
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl6/x86_64/storm-backend-server-1.11.3-1.el6.noarch.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl6/x86_64/storm-dynamic-info-provider-1.7.6-1.sl6.noarch.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl6/x86_64/storm-frontend-server-1.8.4-1.el6.x86_64.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl6/x86_64/storm-frontend-server-debuginfo-1.8.4-1.el6.x86_64.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl6/x86_64/storm-gridhttps-server-3.0.0-1.el6.noarch.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl6/x86_64/storm-native-libs-1.0.1-1.el6.x86_64.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl6/x86_64/storm-native-libs-debuginfo-1.0.1-1.el6.x86_64.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl6/x86_64/storm-native-libs-gpfs-1.0.1-1.el6.x86_64.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl6/x86_64/storm-native-libs-java-1.0.1-1.el6.x86_64.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl6/x86_64/storm-native-libs-lcmaps-1.0.1-1.el6.x86_64.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl6/x86_64/storm-srm-client-1.6.1-1.el6.x86_64.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl6/x86_64/yaim-storm-4.3.4-1.el6.noarch.rpm
+  - os: sl5
+    arch: x86_64
+    gpgkey: http://emisoft.web.cern.ch/emisoft/dist/EMI/3/RPM-GPG-KEY-emi
+    rpms:
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl5/x86_64/storm-backend-server-1.11.3-1.sl5.noarch.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl5/x86_64/storm-dynamic-info-provider-1.7.6-1.sl5.noarch.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl5/x86_64/storm-frontend-server-1.8.4-1.x86_64.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl5/x86_64/storm-frontend-server-debuginfo-1.8.4-1.x86_64.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl5/x86_64/storm-gridhttps-server-3.0.0-1.el5.noarch.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl5/x86_64/storm-native-libs-1.0.1-1.x86_64.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl5/x86_64/storm-native-libs-debuginfo-1.0.1-1.x86_64.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl5/x86_64/storm-native-libs-gpfs-1.0.1-1.x86_64.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl5/x86_64/storm-native-libs-java-1.0.1-1.x86_64.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl5/x86_64/storm-native-libs-lcmaps-1.0.1-1.x86_64.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl5/x86_64/storm-srm-client-1.6.1-1.x86_64.rpm
+      - https://ci-01.cnaf.infn.it/download/storm/emi3/sl5/x86_64/yaim-storm-4.3.4-1.el5.noarch.rpm
