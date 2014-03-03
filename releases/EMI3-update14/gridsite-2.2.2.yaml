@@ -1,0 +1,52 @@
+--- # StoRM release
+product: GridSite 
+technology_provider: European Middleware Initiative
+tp_short: EMI
+contact: cristina.aiftimiei@pd.infn.it
+desc: |
+  The Module Architecture implemented by GridSite extends Apache by adding extra components
+  at the access control and HTTP method execution layers, and supports CGI services supplied
+  with GridSite or written by third parties. mod_gridsite is a loadable module for the
+  Apache web server which provides access control and page formatting for GridSite HTTP(S) 
+  Fileservers, Websites and Web Services hosts. mod_gridsite also intercepts some processing
+  in the standard mod_ssl module to support GSI Proxies and VOMS attribute certificates,
+  as well as the normal X.509 client certificates. The verification of these credentials is
+  handled by functions within mod_gridsite and the main GridSite shared library, without the
+  need to patch or rebuild mod_ssl.
+docs: http://www.gridsite.org/wiki/ 
+releasenotes: https://github.com/CESNET/gridsite/wiki/Gridsite-release-page#wiki-GridSite_2221 
+changelog: >
+  This is a revision of GridSite, fixing the issue of two or more simultaneous (overlapping)
+  delegation operations interfering with each other.
+isodate: 20140303
+incremental: false
+emergency: false
+version: 2.2.2 
+
+capabilities: [Authorization]
+
+packages:
+  - os: sl5
+    arch: x86_64
+    gpgkey: http://emisoft.web.cern.ch/emisoft/dist/EMI/3/RPM-GPG-KEY-emi
+    rpms: 
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl5/x86_64/updates/gridsite-2.2.2-1.el5.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl5/x86_64/updates/gridsite-commands-2.2.2-1.el5.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl5/x86_64/updates/gridsite-debuginfo-2.2.2-1.el5.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl5/x86_64/updates/gridsite-devel-2.2.2-1.el5.i386.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl5/x86_64/updates/gridsite-devel-2.2.2-1.el5.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl5/x86_64/updates/gridsite-libs-2.2.2-1.el5.i386.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl5/x86_64/updates/gridsite-libs-2.2.2-1.el5.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl5/x86_64/updates/gridsite-service-clients-2.2.2-1.el5.x86_64.rpm
+  - os: sl6
+    arch: x86_64
+    gpgkey: http://emisoft.web.cern.ch/emisoft/dist/EMI/3/RPM-GPG-KEY-emi
+    rpms:
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/updates/gridsite-2.2.2-1.el6.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/updates/gridsite-commands-2.2.2-1.el6.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/updates/gridsite-debuginfo-2.2.2-1.el6.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/updates/gridsite-devel-2.2.2-1.el6.i686.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/updates/gridsite-devel-2.2.2-1.el6.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/updates/gridsite-libs-2.2.2-1.el6.i686.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/updates/gridsite-libs-2.2.2-1.el6.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/updates/gridsite-service-clients-2.2.2-1.el6.x86_64.rpm

@@ -1,0 +1,33 @@
+--- # StoRM release
+product: BLAH 
+technology_provider: European Middleware Initiative
+tp_short: EMI
+contact: cristina.aiftimiei@pd.infn.it
+desc:
+  BLAHPD is a light component accepting commands according to the BLAH (Batch Local
+  Ascii Helper) protocol to manage jobs on different Local Resources Management
+  Systems (LRMS). The BLAH service provides a minimal, pragmatically designed
+  common interface for job submission and control to a set of batch systems.
+
+docs: https://wiki.italiangrid.it/twiki/bin/view/CREAM/BlahUserGuide 
+releasenotes: http://www.eu-emi.eu/releases/emi-3-monte-bianco/updates/-/asset_publisher/5Na8/content/update-14-03-03-2014-v-3-7-2-1#What_s_new 
+changelog: |
+  Fixed the following bugs: CREAM-136 - BUpdaterSLURM problem with timestamp
+isodate: 20140303
+incremental: false
+emergency: false
+version: 1.20.5
+
+capabilities: [Job Execution]
+
+packages:
+  - os: sl5
+    arch: x86_64
+    gpgkey: http://emisoft.web.cern.ch/emisoft/dist/EMI/3/RPM-GPG-KEY-emi
+    rpms: 
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl5/x86_64/updates/glite-ce-blahp-1.20.5-1.x86_64.rpm
+  - os: sl6
+    arch: x86_64
+    gpgkey: http://emisoft.web.cern.ch/emisoft/dist/EMI/3/RPM-GPG-KEY-emi
+    rpms:
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/updates/glite-ce-blahp-1.20.5-1.x86_64.rpm

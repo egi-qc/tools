@@ -1,0 +1,48 @@
+--- # StoRM release
+product: WMS
+technology_provider: European Middleware Initiative
+tp_short: EMI
+contact: cristina.aiftimiei@pd.infn.it
+desc: >
+  The Workload Management System (WMS) is responsible for distributing and managing tasks
+  across computing and storage resources available on a Grid. 
+docs: https://wiki.italiangrid.it/twiki/bin/view/WMS/WebHome#Documentation 
+releasenotes: http://www.eu-emi.eu/releases/emi-3-monte-bianco/updates/-/asset_publisher/5Na8/content/update-14-03-03-2014-v-3-7-2-1#What_s_new_AN5
+changelog: |
+  WMS server:
+   - WMS-113 - glite-wms-create-proxy.sh uses an undefined GLOBUS_LOCATION env var
+   - WMS-114 - Purger still uses 512bits in an hard-coded routine which update wms's proxy
+   - WMS-116 - Bad exception handling in ICE prevents the user from getting a readable error message
+  WMS clients:
+   - WMS-111 - Incorrect handling of JDL's CpuNumber and HostNumber in WMS UI
+   - WMS-112 - EMI WMS job purge behaviour when output retrieve fail
+isodate: 20140303
+incremental: false
+emergency: false
+version: 3.6.3
+
+capabilities: [Job Scheduling]
+
+packages:
+  - os: sl5
+    arch: x86_64
+    gpgkey: http://emisoft.web.cern.ch/emisoft/dist/EMI/3/RPM-GPG-KEY-emi
+    rpms: 
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl5/x86_64/updates/glite-jdl-api-cpp-3.4.3-1.el5.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl5/x86_64/updates/glite-jdl-api-cpp-devel-3.4.3-1.el5.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl5/x86_64/updates/glite-jdl-api-cpp-doc-3.4.3-1.el5.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl5/x86_64/updates/glite-wms-ice-3.5.3-1.sl5.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl5/x86_64/updates/glite-wms-purger-3.5.1-1.sl5.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl5/x86_64/updates/glite-wms-purger-devel-3.5.1-1.sl5.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl5/x86_64/updates/glite-wms-ui-commands-3.5.2-1.sl5.x86_64.rpm
+  - os: sl6
+    arch: x86_64
+    gpgkey: http://emisoft.web.cern.ch/emisoft/dist/EMI/3/RPM-GPG-KEY-emi
+    rpms:
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/updates/glite-jdl-api-cpp-3.4.3-1.el6.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/updates/glite-jdl-api-cpp-devel-3.4.3-1.el6.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/updates/glite-jdl-api-cpp-doc-3.4.3-1.el6.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/updates/glite-wms-ice-3.5.3-1.sl6.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/updates/glite-wms-purger-3.5.1-1.sl6.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/updates/glite-wms-purger-devel-3.5.1-1.sl6.x86_64.rpm
+      - http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/updates/glite-wms-ui-commands-3.5.2-1.sl6.x86_64.rpm
