@@ -152,9 +152,9 @@ def create_release_xml(release, pkgs):
     ET.SubElement(root, REL_PN).text = release.get('product', '')
     os = pkgs.get('os', '')
     repo_type = get_repo_type(os)
-    shortname = '%s.%s.%s.%s' % (release.get('tp_short').upper(),
-                                 release.get('product').lower(),
-                                 os, pkgs.get('arch', ''))
+    shortname = ('%s.%s.%s.%s' % (release.get('tp_short').upper(),
+                                  release.get('product').lower(),
+                                  os, pkgs.get('arch', ''))).replace(' ', '_')
     ET.SubElement(root, REL_PSN).text = shortname
     ET.SubElement(root, REL_TP).text = release.get('tp_short', '')
     ET.SubElement(root, REL_TPSN).text = release.get('tp_short', '')
