@@ -10,8 +10,8 @@ import yaml
 REL_REL = 'release:release'
 REL_PN = 'release:productName'
 REL_PSN = 'release:productShortName'
-REL_TP = 'release:technologProvider'
-REL_TPSN = 'release:technologProviderShortName'
+REL_TP = 'release:technologyProvider'
+REL_TPSN = 'release:technologyProviderShortName'
 REL_CONT = 'release:contact'
 REL_TECHCONT = 'release:technicalContact'
 REL_DESC = 'release:description'
@@ -124,7 +124,7 @@ def create_repo_info(shortname, repo_type, pkg):
         ET.SubElement(repofile_root, REPO_NAME).text = shortname
     else:
         ET.SubElement(repofile_root, REPO_TYPE).text = repo_type
-    ET.SubElement(repofile_root, REPO_BASE, {'type': 'relative'})
+    ET.SubElement(repofile_root, REPO_BASE, {'type': 'relative'}).text = '/'
     if repo_type == 'yum':
         ET.SubElement(repofile_root, REPO_ENABLED).text = '1'
         ET.SubElement(repofile_root, REPO_PRIO).text = '1'
@@ -165,10 +165,10 @@ def create_release_xml(release, pkgs):
     isodate_now = datetime.datetime.now().strftime('%Y%m%d')
     ET.SubElement(root, REL_ISODATE).text = '%s' % release.get('isodate',
                                                                isodate_now)
-    ET.SubElement(root, REL_INC).text = '%s' % release.get('incremental',
-                                                           False)
-    ET.SubElement(root, REL_EMRGC).text = '%s' % release.get('emergency',
-                                                             False)
+    ET.SubElement(root, REL_INC).text = ('%s' % release.get('incremental',
+                                                            False)).lower()
+    ET.SubElement(root, REL_EMRGC).text = ('%s' % release.get('emergency',
+                                                              False)).lower()
     major, minor, rev = parse_version(release.get('version', ''))
     ET.SubElement(root, REL_MAJOR).text = major
     ET.SubElement(root, REL_MINOR).text = minor
@@ -187,7 +187,7 @@ def create_release_xml(release, pkgs):
     }
     ET.SubElement(root, REPO_ROOT.get(repo_type), repo_attrs)
     root.append(create_repo_info(shortname, repo_type, pkg))
-    return root, shortname
+    return root, '%s-%s.%s.%s' % (shortname, major, minor, rev)
 
 parser = argparse.ArgumentParser(description='Produce release xml')
 parser.add_argument('release', metavar='<RELEASE YAML>',
