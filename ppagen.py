@@ -1,6 +1,7 @@
 import datetime
 import argparse
 import os
+import re
 import urlparse
 import xml.etree.ElementTree as ET
 import xml.dom.minidom as minidom
@@ -77,13 +78,19 @@ def parse_version(version):
     return major, minor, rev
 
 
-def get_rpm_attrs(url):
+def get_basic_attrs(url):
     attrs = {
         'pkgtype': 'metapackage',
         'url': url
     }
     filename = os.path.basename(urlparse.urlparse(url)[2])
     attrs['filename'] = filename
+    return attrs
+
+
+def get_rpm_attrs(url):
+    attrs = get_basic_attrs(url)
+    filename = attrs['filename']
     dot_split = filename.split('.')
     attrs['arch'] = dot_split[-2]
     dash_split = ('.'.join(dot_split[0:-2])).split('-')
@@ -94,6 +101,32 @@ def get_rpm_attrs(url):
     return attrs
 
 
+def get_deb_attrs(url):
+    attrs = get_basic_attrs(url)
+    filename = attrs['filename']
+    nodeb = filename.rsplit('.', 1)[0]
+    pkg_ver, arch = nodeb.rsplit('_', 1)
+    pkg, ver = pkg_ver.rsplit('_', 1)
+    attrs['arch'] = arch
+    try:
+        attrs['version'], attrs['release'] = ver.rsplit('-', 1)
+    except ValueError:
+        attrs['version'] = ver
+        attrs['release'] = 1
+    attrs['pkgname'] = pkg
+    return attrs
+
+
+def get_pkg_attrs(url):
+    # assuming that package extension gives the correct pkg format
+    if re.match('.*\.deb$', url):
+        return get_deb_attrs(url)
+    elif re.match('.*\.rpm$', url):
+        return get_rpm_attrs(url)
+    else:
+        raise ValueError("Expecting .rpm or .deb package")
+
+
 def create_umd_meta(release, pkg):
     root = ET.Element(UMD_META)
     ET.SubElement(root, UMD_PLAT).text = pkg.get('os', '')
@@ -102,7 +135,7 @@ def create_umd_meta(release, pkg):
         ET.SubElement(root, UMD_CAPAB).text = capability
     pkgs = ET.SubElement(root, UMD_PKGS)
     for url in pkg.get('rpms'):
-        ET.SubElement(pkgs, UMD_PKG, get_rpm_attrs(url))
+        ET.SubElement(pkgs, UMD_PKG, get_pkg_attrs(url))
     return root
 
 
