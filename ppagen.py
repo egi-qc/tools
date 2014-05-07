@@ -134,7 +134,7 @@ def create_umd_meta(release, pkg):
     for capability in release['capabilities']:
         ET.SubElement(root, UMD_CAPAB).text = capability
     pkgs = ET.SubElement(root, UMD_PKGS)
-    for url in pkg.get('rpms'):
+    for url in pkg.get('rpms', []):
         ET.SubElement(pkgs, UMD_PKG, get_pkg_attrs(url))
     return root
 
