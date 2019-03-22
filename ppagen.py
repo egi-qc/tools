@@ -48,14 +48,14 @@ REPO_PROTECT = 'repofile:protect'
 REPO_ENTRY = 'repofile:entry'
 
 REPO_ROOT = {
-    'apt': 'repository:aptRepository',
+    'deb': 'repository:debRepository',
     'yum': 'repository:yumRepository',
 }
 
 
 def get_repo_type(os):
     if os.find('deb') != -1:
-        return 'apt'
+        return 'deb'
     return 'yum'
 
 
@@ -134,7 +134,7 @@ def create_umd_meta(release, pkg):
     for capability in release['capabilities']:
         ET.SubElement(root, UMD_CAPAB).text = capability
     pkgs = ET.SubElement(root, UMD_PKGS)
-    for url in pkg.get('rpms', []):
+    for url in pkg.get('rpms'):
         ET.SubElement(pkgs, UMD_PKG, get_pkg_attrs(url))
     return root
 
