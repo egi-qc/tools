@@ -1,0 +1,34 @@
+--- # StoRM release
+product: apel-ssm
+technology_provider: APEL
+tp_short: APEL
+contact: apel-admins@stfcNOSPAMPLEASE.ac.uk
+desc: |
+    Secure Stomp Messenger (SSM) is designed to simply send messages using the STOMP protocol. Messages are signed and may be encrypted during transit. Persistent queues should be used to guarantee delivery.
+docs: https://wiki.egi.eu/wiki/APEL/SSM
+releasenotes: | 
+    Added a delay when receiver is reconnecting to improve reliability. Improved the log output for SSM receivers so that there are fewer trivial entries and so it's more useful in tracking messages on the filesystem.
+changelog: https://github.com/apel/ssm/blob/dev/CHANGELOG
+isodate: 20180918
+incremental: false
+emergency: false
+version: 2.3.0
+capabilities: [Accounting] 
+packages:
+  - os: sl6
+    arch: x86_64
+    gpgkey: http://repository.egi.eu/sw/production/umd/UMD-RPM-PGP-KEY
+    rpms:
+     - https://github.com/apel/ssm/releases/download/2.3.0-1/apel-ssm-2.3.0-1.el6.noarch.rpm
+  - os: centos7
+    arch: x86_64
+    gpgkey: http://repository.egi.eu/sw/production/umd/UMD-RPM-PGP-KEY
+    rpms:
+     - https://github.com/apel/ssm/releases/download/2.3.0-1/apel-ssm-2.3.0-1.el7.noarch.rpm
+  - os: ubuntu-xenial
+    rpms:
+    arch: amd64
+    gpgkey: http://repository.egi.eu/sw/production/umd/UMD-RPM-PGP-KEY
+    rpms:
+     - https://github.com/apel/ssm/releases/download/2.3.0-1/apel-ssm-service_2.3.0-1_all.deb
+     - https://github.com/apel/ssm/releases/download/2.3.0-1/apel-ssm_2.3.0-1_all.deb
